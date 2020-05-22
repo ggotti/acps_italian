@@ -1,0 +1,10 @@
+
+
+Body of Text-----------
+Times New Roman Size 14
+Black, Non bold
+
+Title------------
+Arial Size 24
+Bold
+Hex={BD,18,18}
