@@ -28,35 +28,35 @@
         }
 
         .menu_songs {
-            background-image: url('./Menu/assets/songs.png');
+            background-image: url('images/songs.png');
         }
 
         .menu_songs:hover {
-            background-image: url('./Menu/assets/songs2.png');
+            background-image: url('images/songs2.png');
         }
 
         .menu_activities {
-            background-image: url('./Menu/assets/activities.png');
+            background-image: url('images/activities.png');
         }
 
         .menu_activities:hover {
-            background-image: url('./Menu/assets/activities2.png');
+            background-image: url('images/activities2.png');
         }
 
         .menu_more {
-            background-image: url('./Menu/assets/more.png');
+            background-image: url('images/more.png');
         }
 
         .menu_more:hover {
-            background-image: url('./Menu/assets/more2.png');
+            background-image: url('images/more2.png');
         }
 
         .menu_kids {
-            background-image: url('./Menu/assets/kids.png');
+            background-image: url('images/kids.png');
         }
 
         .menu_kids:hover {
-            background-image: url('./Menu/assets/kids2.png');
+            background-image: url('images/kids2.png');
         }
 
         .modal {
@@ -65,7 +65,7 @@
             top: 0;
             left: 180px;
             background-color: #cc3333;
-            background-image: url('./Menu/assets/background.png');
+            background-image: url('images/background.png');
             width: 340px;
             padding: 15px;
 			padding-bottom:5px;
@@ -82,7 +82,7 @@
         }
 
         .sub_btn {
-            background-image: url('./Menu/assets/blankred.png');
+            background-image: url('images/blankred.png');
             width: 161px;
             height: 55px;
             font-family: 'Comic Sans MS', 'sans-serif';
@@ -102,13 +102,13 @@
 			text-decoration: none;
 		}
 
-		.sub_btn a:link, a:visited {
+		.sub_btn a:link,.sub_btn a:visited {
 			color: white;
 			text-decoration: none;
 		}
 
 		.sub_btn:hover {
-            background-image: url('./Menu/assets/blankgreen.png');
+            background-image: url('images/blankgreen.png');
         }
 
         .left_sub_menu {
@@ -138,47 +138,21 @@
 			margin-top: 2px;
 		}
 
+        #movie_banner_container {
+            background: transparent;
+            width: 562px;
+            height: 137px;
+            position: relative;
+            z-index: 1;
+            float: right;
+            right: 565px;
+        }
+
     </style>
-	<script>
-		function hideModel(modelToToggle) {
-			modelToToggle.style.display = "none";
-		}
+    <script src="./scripts/createjs.min.js" ></script>
+    <script src="./scripts/bannerAnimation.js" defer ></script>
+    <script src="./scripts/menuAndBanner.js" defer ></script>
 
-		function showModel(modelToToggle) {
-			modelToToggle.style.display = "block";
-		}
-
-		function hideAllModals(modals) {
-			for(const modal of modals) {
-				hideModel(modal)
-			}
-		}
-
-		window.onload = function onload() {
-			const modalsList = document.getElementsByClassName('modal');
-			const modals = Array.from(modalsList).reduce(function(result, item, index,) {
-				result[item.id] = item;
-				return result;
-			}, {});
-			const menuBtns = document.getElementsByClassName('menu_btn');
-
-			for(const menuBtn of menuBtns) {
-				const buttonId = menuBtn.id;
-				const modalName =  buttonId.substring(0, buttonId.lastIndexOf('_'));
-				const buttonModal = modals['menu_modal_' + modalName];
-
-				menuBtn.addEventListener("click", function hideModelTrigger() {
-					hideAllModals(modalsList)
-					showModel(buttonModal);
-				})
-
-				buttonModal.addEventListener("mouseleave", function hideModelTrigger() {
-					hideModel(buttonModal)
-				})
-
-			}
-		}
-	</script>
 </head>
 <div id="main">
     <body bgcolor="#D3D3D3" background="images/background.gif">
@@ -190,6 +164,11 @@
                         <img border="0" src="images/topleft.gif" width="161" height="119"></a></td>
                 <td height="119" width="551">
                     <img border="0" src="images/top.gif" width="562" height="137" align="left"></td>
+                    <div id="movie_banner_container" style="">
+                        <canvas id="movie_banner_canvas" width="562" height="137" style="position: absolute; display: block; background:transparent;"></canvas>
+                        <div id="movie_banner_dom_overlay" style="pointer-events:none; overflow:hidden; width:562px; height:137px; position: absolute; left: 0px; top: 0px; display: block;">
+                        </div>
+                    </div>
             </tr>
             <tr>
                 <td width="161" background="images/sidebar.gif">
@@ -211,7 +190,7 @@
                         <div id="menu_modal_songs" class="modal">
 							<div class="innerModal">
 							<div class="left_sub_menu">
-                                <img src="./Menu/assets/photo1.jpg" alt="Ponte Vecchio">
+                                <img src="images/photo1.jpg" alt="Ponte Vecchio">
                                 <ul class="sub_menu">
                                     <li class="sub_btn"><a href="songprep.htm">Prep</a></li>
                                     <li class="sub_btn"><a href="song12.htm">Grade 1-2</a></li>
@@ -230,7 +209,7 @@
 						<div id="menu_modal_activities" class="modal">
 							<div class="innerModal">
 							<div class="left_sub_menu">
-								<img src="./Menu/assets/photo2.jpg" alt="Amalfi Coast? Maybe.">
+								<img src="images/photo2.jpg" alt="Amalfi Coast? Maybe.">
 								<ul class="sub_menu menu_songs_submenu">
 									<li class="sub_btn"><a href="activeprep.htm">Prep</a></li>
 									<li class="sub_btn"><a href="active12.htm">Grade 1-2</a></li>
@@ -247,7 +226,7 @@
 						<div id="menu_modal_more" class="modal">
 							<div class="innerModal">
 								<div class="left_sub_menu">
-									<img src="./Menu/assets/photo3.jpg" alt="Italian Alps">
+									<img src="images/photo3.jpg" alt="Italian Alps">
 									<ul class="sub_menu">
 										<li class="sub_btn"><a href="recipes.htm">Recipes</a></li>
 										<li class="sub_btn"><a href="travel.htm">Travel</a></li>
@@ -266,7 +245,7 @@
 						<div id="menu_modal_kids" class="modal">
 							<div class="innerModal">
 								<div class="left_sub_menu">
-									<img src="./Menu/assets/photo4.jpg" alt="Venice">
+									<img src="images/photo4.jpg" alt="Venice">
 									<ul class="sub_menu">
 										<li class="sub_btn"><a href="workpreps.htm">Prep</a></li>
 										<li class="sub_btn"><a href="work12.htm">Grade 1-2</a></li>
@@ -342,5 +321,4 @@
     </div>
     </body>
 </div>
-<!-- #EndTemplate -->
 </html>
