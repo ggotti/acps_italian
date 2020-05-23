@@ -1,103 +1,346 @@
 <html>
 
-<!-- #BeginTemplate "main.dwt" -->
-
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<!-- #BeginEditable "doctitle" -->
-<title>Italian 05 - Recipes</title>
-<!-- #EndEditable -->
-<style type="text/css">
-<!--
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Italian 05 - Recipes</title>
+    <style type="text/css">
+        div#main {
+            position: absolute;
+            top: 8px;
+            left: 4%;
+        }
 
-div#main
-{
-	position:absolute;
-	top: 8px;
-	left: 4%;
+        #menu {
+            list-style-type: none;
+            width: 161px;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        #menu button {
+            width: 161px;
+            height: 55px;
+            border: 0;
+        }
+
+        #menu button:focus {
+            outline: 0;
+        }
+
+        .menu_songs {
+            background-image: url('./Menu/assets/songs.png');
+        }
+
+        .menu_songs:hover {
+            background-image: url('./Menu/assets/songs2.png');
+        }
+
+        .menu_activities {
+            background-image: url('./Menu/assets/activities.png');
+        }
+
+        .menu_activities:hover {
+            background-image: url('./Menu/assets/activities2.png');
+        }
+
+        .menu_more {
+            background-image: url('./Menu/assets/more.png');
+        }
+
+        .menu_more:hover {
+            background-image: url('./Menu/assets/more2.png');
+        }
+
+        .menu_kids {
+            background-image: url('./Menu/assets/kids.png');
+        }
+
+        .menu_kids:hover {
+            background-image: url('./Menu/assets/kids2.png');
+        }
+
+        .modal {
+			display: none;
+            position: absolute;
+            top: 0;
+            left: 180px;
+            background-color: #cc3333;
+            background-image: url('./Menu/assets/background.png');
+            width: 340px;
+            padding: 15px;
+			padding-bottom:5px;
+        }
+
+		.innerModal {
+			display:flex;
 		}
-	
--->
-</style>
+
+        .sub_menu {
+            list-style-type: none;
+            width: 161px;
+            padding: 0;
+        }
+
+        .sub_btn {
+            background-image: url('./Menu/assets/blankred.png');
+            width: 161px;
+            height: 55px;
+            font-family: 'Comic Sans MS', 'sans-serif';
+            text-align: center;
+            vertical-align: middle;
+            font-size: 22px;
+            line-height: 45px;
+            color: white;
+            margin-bottom: 4px;
+			border: 0px;
+        }
+
+        .sub_btn a {
+            display: inline-block;
+            vertical-align: middle;
+			padding-right: 30px;
+			text-decoration: none;
+		}
+
+		.sub_btn a:link, a:visited {
+			color: white;
+			text-decoration: none;
+		}
+
+		.sub_btn:hover {
+            background-image: url('./Menu/assets/blankgreen.png');
+        }
+
+        .left_sub_menu {
+            float: left;
+            width: 50%;
+			height: 100%;
+        }
+
+        .right_sub_menu {
+            float: right;
+            width: 50%;
+			height: 100%;
+			vertical-align: text-bottom;
+			align-self: flex-end;
+			padding-bottom: 15px;
+
+		}
+
+        .sub_menu_desc {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+			font-weight: normal;
+            font-size: 20px;
+            color: white;
+        }
+
+		.quiz_button {
+			margin-top: 2px;
+		}
+
+    </style>
+	<script>
+		function hideModel(modelToToggle) {
+			modelToToggle.style.display = "none";
+		}
+
+		function showModel(modelToToggle) {
+			modelToToggle.style.display = "block";
+		}
+
+		function hideAllModals(modals) {
+			for(const modal of modals) {
+				hideModel(modal)
+			}
+		}
+
+		window.onload = function onload() {
+			const modalsList = document.getElementsByClassName('modal');
+			const modals = Array.from(modalsList).reduce(function(result, item, index,) {
+				result[item.id] = item;
+				return result;
+			}, {});
+			const menuBtns = document.getElementsByClassName('menu_btn');
+
+			for(const menuBtn of menuBtns) {
+				const buttonId = menuBtn.id;
+				const modalName =  buttonId.substring(0, buttonId.lastIndexOf('_'));
+				const buttonModal = modals['menu_modal_' + modalName];
+
+				menuBtn.addEventListener("click", function hideModelTrigger() {
+					hideAllModals(modalsList)
+					showModel(buttonModal);
+				})
+
+				buttonModal.addEventListener("mouseleave", function hideModelTrigger() {
+					hideModel(buttonModal)
+				})
+
+			}
+		}
+	</script>
 </head>
 <div id="main">
-<body bgcolor="#D3D3D3" background="images/background.gif">
-<div align="left">
-<table border="0" width="712" id="table1" height="600" bordercolor="#000000" cellspacing="0" cellpadding="0">
-	<tr>
-		<td width="161" height="119" valign="bottom">
-		<a href="index.htm">
-		<img border="0" src="images/topleft.gif" width="161" height="119"></a></td>
-		<td height="119" width="551">
-		<img border="0" src="images/top.gif" width="562" height="137" align="left"></td>
-	</tr>
-	<tr>
-		<td width="161" background="images/sidebar.gif">
-		<div style="position: absolute; width: 100px; height: 100px; z-index: 0; left: 0px; top: 134px; " id="layer1">
-			<object classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" id="Menu" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" border="0" width="550" height="400">
-				<param name="movie" value="menu.swf">
-				<param name="quality" value="High">
-				<param name="wmode" value="transparent">
-				<param name="menu" value="false">
-				<embed src="menu.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="Menu" width="550" height="400" quality="High" wmode="transparent" menu="false"></object>
-		</div>
-&nbsp;<p>&nbsp;</p>
-		<p>&nbsp;</p>
-		<p>&nbsp;</td>
-		<td bgcolor="#FFFFFF" width="551" valign="top" rowspan="2">
-<div align="center">
-	<table border="0" width="97%" id="table2" cellspacing="0" cellpadding="0">
-		<tr>
-			<td><!-- #BeginEditable "MainBody" -->
-<table border="0" style="border-collapse: collapse" width="104%" id="table3">
-	<tr>
-		<td width="99%" colspan="2">
+    <body bgcolor="#D3D3D3" background="images/background.gif">
+    <div align="left">
+        <table border="0" width="712" id="table1" height="600" bordercolor="#000000" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="161" height="119" valign="bottom">
+                    <a href="index.htm">
+                        <img border="0" src="images/topleft.gif" width="161" height="119"></a></td>
+                <td height="119" width="551">
+                    <img border="0" src="images/top.gif" width="562" height="137" align="left"></td>
+            </tr>
+            <tr>
+                <td width="161" background="images/sidebar.gif">
+                    <div style="position: absolute;  z-index: 0; left: 0px; top: 134px; " id="layer1">
+                        <ul id="menu">
+                            <li>
+                                <button id="songs_btn" class="menu_songs menu_btn" title="Songs"></button>
+                            </li>
+                            <li>
+                                <button id="activities_btn"  class="menu_activities menu_btn" title="Activities"></button>
+                            </li>
+                            <li>
+                                <button id="more_btn"  class="menu_more menu_btn" title="More"></button>
+                            </li>
+                            <li>
+                                <button id="kids_btn"  class="menu_kids menu_btn" title="Kids Work"></button>
+                            </li>
+                        </ul>
+                        <div id="menu_modal_songs" class="modal">
+							<div class="innerModal">
+							<div class="left_sub_menu">
+                                <img src="./Menu/assets/photo1.jpg" alt="Ponte Vecchio">
+                                <ul class="sub_menu">
+                                    <li class="sub_btn"><a href="songprep.htm">Prep</a></li>
+                                    <li class="sub_btn"><a href="song12.htm">Grade 1-2</a></li>
+                                    <li class="sub_btn"><a href="song34.htm"> Grade 3-4</a></li>
+                                    <li class="sub_btn"><a href="song56.htm">Grade 5-6</a></li>
+                                </ul>
+                            </div>
+                            <div class="right_sub_menu">
+                                <div class="sub_menu_desc"> Benvenuti to the Italian Songs pages. Click on your class on
+                                    the menu to the left to listen to some simple Italian children's songs. Read and
+                                    sing along with me and practice your vocabulary.
+                                </div>
+                            </div>
+						</div>
+                        </div>
+						<div id="menu_modal_activities" class="modal">
+							<div class="innerModal">
+							<div class="left_sub_menu">
+								<img src="./Menu/assets/photo2.jpg" alt="Amalfi Coast? Maybe.">
+								<ul class="sub_menu menu_songs_submenu">
+									<li class="sub_btn"><a href="activeprep.htm">Prep</a></li>
+									<li class="sub_btn"><a href="active12.htm">Grade 1-2</a></li>
+									<li class="sub_btn"><a href="active34.htm"> Grade 3-4</a></li>
+									<li class="sub_btn"><a href="active56.htm">Grade 5-6</a></li>
+								</ul>
+							</div>
+							<div class="right_sub_menu">
+								<div class="sub_menu_desc"> Benvenuti  to the Italian Activities pages. Read along with me and learn some common greetings, body parts, numbers, colours, days of the week and a lot more.
+								</div>
+							</div>
+							</div>
+						</div>
+						<div id="menu_modal_more" class="modal">
+							<div class="innerModal">
+								<div class="left_sub_menu">
+									<img src="./Menu/assets/photo3.jpg" alt="Italian Alps">
+									<ul class="sub_menu">
+										<li class="sub_btn"><a href="recipes.htm">Recipes</a></li>
+										<li class="sub_btn"><a href="travel.htm">Travel</a></li>
+										<li class="sub_btn"><a href="stories.htm">Stories</a></li>
+										<li class="sub_btn"><a href="links.htm">Links</a></li>
+									</ul>
+								</div>
+								<div class="right_sub_menu">
+									<div class="sub_menu_desc"> Benvenuti  to the Italian Activities pages. Read along with me and learn some common greetings, body parts, numbers, colours, days of the week and a lot more.
+									</div>
+									<button class="sub_btn quiz_button"><a href="quiz.htm">Quiz</a></button>
 
-				<p align="left"><b>
-				<font face="Arial" color="#BD1818" style="font-size: 24pt">
-				Signora's Favorite Recipes</font></b></p>
+								</div>
+							</div>
+						</div>
+						<div id="menu_modal_kids" class="modal">
+							<div class="innerModal">
+								<div class="left_sub_menu">
+									<img src="./Menu/assets/photo4.jpg" alt="Venice">
+									<ul class="sub_menu">
+										<li class="sub_btn"><a href="workpreps.htm">Prep</a></li>
+										<li class="sub_btn"><a href="work12.htm">Grade 1-2</a></li>
+										<li class="sub_btn"><a href="work34.htm"> Grade 3-4</a></li>
+										<li class="sub_btn"><a href="work56.htm">Grade 5-6</a></li>
+									</ul>
+								</div>
+								<div class="right_sub_menu">
+									<div class="sub_menu_desc">Benvenuti  to the students work page, where you will find examples of your work. Click on your class on the menu to view some of your work.<br/></div>
+								</div>
+							</div>
+						</div>
 
-		</td>
-	</tr>
-	<tr>
-		<td width="52%">
+                    </div>
+                    &nbsp;<p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</td>
+                <td bgcolor="#FFFFFF" width="551" valign="top" rowspan="2">
+                    <div align="center">
+                        <table border="0" width="97%" id="table2" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td><!-- #BeginEditable "MainBody" -->
+                                    <table border="0" style="border-collapse: collapse" width="104%" id="table3">
+                                        <tr>
+                                            <td width="99%" colspan="2">
 
-<p align="left"><font style="font-size: 14pt"><a href="gelato.htm">Gelato</a></font></p>
-<p align="left"><font style="font-size: 14pt"><a href="minestronerecipe.htm">Minestroni</a></font></p>
-<p align="left"><font style="font-size: 14pt"><a href="gnocchi.htm">Gnocchi</a></font></p>
-<p align="left"><font style="font-size: 14pt"><a href="pasta.htm">Pasta</a></font></p>
+                                                <p align="left"><b>
+                                                    <font face="Arial" color="#BD1818" style="font-size: 24pt">
+                                                        Signora's Favorite Recipes</font></b></p>
 
-<p align="left"><font style="font-size: 14pt"><a href="tiramisu.htm">Tiramisu</a></font></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="52%">
 
-		<p>&nbsp;</td>
-		<td width="47%">
-<img src="images/signor2.GIF" border="0" width="123" height="133"></td>
-	</tr>
-</table>
+                                                <p align="left"><font style="font-size: 14pt"><a href="gelato.htm">Gelato</a></font>
+                                                </p>
+                                                <p align="left"><font style="font-size: 14pt"><a
+                                                        href="minestronerecipe.htm">Minestroni</a></font></p>
+                                                <p align="left"><font style="font-size: 14pt"><a href="gnocchi.htm">Gnocchi</a></font>
+                                                </p>
+                                                <p align="left"><font style="font-size: 14pt"><a
+                                                        href="pasta.htm">Pasta</a></font></p>
 
-			<!-- #EndEditable --><p>&nbsp;</td>
-		</tr>
-	</table>
-	<p><font style="font-size: 8pt">Copyright Anderson's Creek Primary School. Content By 
-	Concetta Gigliotti, Design by Gerard Gigliotti</font><div style="position: absolute; width: 100px; height: 100px; z-index: 1; left: 164px; top: 0px" id="layer2">
-		<object classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" id="obj1" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" border="0" width="562" height="137">
-			<param name="movie" value="movie/top.swf">
-			<param name="quality" value="High">
-			<param name="bgcolor" value="#ffffff">
-			<param name="wmode" value="transparent">
-			<embed src="movie/top.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="obj1" width="562" height="137" quality="High" bgcolor="#ffffff" wmode="transparent"></object>
-	</div>
-</div>
-		</td>
-	</tr>
-	<tr>
-		<td width="161" background="images/sidebar.gif" height="51">
-		&nbsp;</td>
-		</tr>
-	</table>
+                                                <p align="left"><font style="font-size: 14pt"><a href="tiramisu.htm">Tiramisu</a></font>
+                                                </p>
 
-</div>
-</body>
+                                                <p>&nbsp;</td>
+                                            <td width="47%">
+                                                <img src="images/signor2.GIF" border="0" width="123" height="133"></td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- #EndEditable --><p>&nbsp;</td>
+                            </tr>
+                        </table>
+                        <p><font style="font-size: 8pt">Copyright Anderson's Creek Primary School. Content By
+                            Concetta Gigliotti, Design by Gerard Gigliotti</font>
+                        <div style="position: absolute; width: 100px; height: 100px; z-index: 1; left: 164px; top: 0px"
+                             id="layer2">
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="161" background="images/sidebar.gif" height="51">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    </body>
 </div>
 <!-- #EndTemplate -->
 </html>
