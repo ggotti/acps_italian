@@ -1,0 +1,143 @@
+div#main {
+    position: absolute;
+    top: 8px;
+    left: 4%;
+}
+
+#menu {
+    list-style-type: none;
+    width: 161px;
+    padding: 0;
+    margin-top: 0;
+}
+
+#menu button {
+    width: 161px;
+    height: 55px;
+    border: 0;
+}
+
+#menu button:focus {
+    outline: 0;
+}
+
+.menu_songs {
+    background-image: url('images/songs.png');
+}
+
+.menu_songs:hover {
+    background-image: url('images/songs2.png');
+}
+
+.menu_activities {
+    background-image: url('images/activities.png');
+}
+
+.menu_activities:hover {
+    background-image: url('images/activities2.png');
+}
+
+.menu_more {
+    background-image: url('images/more.png');
+}
+
+.menu_more:hover {
+    background-image: url('images/more2.png');
+}
+
+.menu_kids {
+    background-image: url('images/kids.png');
+}
+
+.menu_kids:hover {
+    background-image: url('images/kids2.png');
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 180px;
+    background-color: #cc3333;
+    background-image: url('images/background.png');
+    width: 340px;
+    padding: 15px;
+    padding-bottom:5px;
+}
+
+.innerModal {
+    display:flex;
+}
+
+.sub_menu {
+    list-style-type: none;
+    width: 161px;
+    padding: 0;
+}
+
+.sub_btn {
+    background-image: url('images/blankred.png');
+    width: 161px;
+    height: 55px;
+    font-family: 'Comic Sans MS', 'sans-serif';
+    text-align: center;
+    vertical-align: middle;
+    font-size: 22px;
+    line-height: 45px;
+    color: white;
+    margin-bottom: 4px;
+    border: 0px;
+}
+
+.sub_btn a {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 30px;
+    text-decoration: none;
+}
+
+.sub_btn a:link,.sub_btn a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.sub_btn:hover {
+    background-image: url('images/blankgreen.png');
+}
+
+.left_sub_menu {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.right_sub_menu {
+    float: right;
+    width: 50%;
+    height: 100%;
+    vertical-align: text-bottom;
+    align-self: flex-end;
+    padding-bottom: 15px;
+
+}
+
+.sub_menu_desc {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    color: white;
+}
+
+.quiz_button {
+    margin-top: 2px;
+}
+
+#movie_banner_container {
+    background: transparent;
+    width: 562px;
+    height: 137px;
+    position: relative;
+    z-index: 1;
+    float: right;
+    right: 565px;
+}
