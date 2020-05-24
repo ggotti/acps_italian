@@ -52,6 +52,17 @@ function hideAllModals(modals) {
     }
 }
 
+
+function initSound() {
+    const audioLinks = document.querySelectorAll('[data-audio]');
+    for(const audioLink of audioLinks) {
+        audioLink.addEventListener("click", function playAudio(event) {
+            const audio = new Audio(audioLink.href);
+            event.preventDefault();
+            return audio.play();
+        })
+    }
+}
 window.onload = function onload() {
     const modalsList = document.getElementsByClassName('modal');
     const modals = Array.from(modalsList).reduce(function(result, item, index,) {
@@ -74,6 +85,8 @@ window.onload = function onload() {
             hideModel(buttonModal)
         })
     }
+
+    initSound()
 
     initBanner()
 }
