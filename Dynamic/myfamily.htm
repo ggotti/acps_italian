@@ -16,9 +16,13 @@ div#main
 	top: 8px;
 	left: 4%;
 		}
-	
+
 -->
-</style>
+</style><link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="./scripts/createjs.min.js" ></script>
+    <script src="./scripts/bannerAnimation.js" defer ></script>
+    <script src="./scripts/menuAndBanner.js" defer ></script>
+
 </head>
 <div id="main">
 <body bgcolor="#D3D3D3" background="images/background.gif">
@@ -29,18 +33,103 @@ div#main
 		<a href="index.htm">
 		<img border="0" src="images/topleft.gif" width="161" height="119"></a></td>
 		<td height="119" width="551">
-		<img border="0" src="images/top.gif" width="562" height="137" align="left"></td>
+		                  <img border="0" src="images/top.gif" width="562" height="137" align="left"></td><div id="movie_banner_container" style="">
+                        <canvas id="movie_banner_canvas" width="562" height="137" style="position: absolute; display: block; background:transparent;"></canvas>
+                        <div id="movie_banner_dom_overlay" style="pointer-events:none; overflow:hidden; width:562px; height:137px; position: absolute; left: 0px; top: 0px; display: block;">
+                        </div>
+                    </div>
 	</tr>
 	<tr>
 		<td width="161" background="images/sidebar.gif">
-		<div style="position: absolute; width: 100px; height: 100px; z-index: 0; left: 0px; top: 134px; " id="layer1">
-			<object classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" id="Menu" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" border="0" width="550" height="400">
-				<param name="movie" value="menu.swf">
-				<param name="quality" value="High">
-				<param name="wmode" value="transparent">
-				<param name="menu" value="false">
-				<embed src="menu.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="Menu" width="550" height="400" quality="High" wmode="transparent" menu="false"></object>
-		</div>
+			<div style="position: absolute;  z-index: 0; left: 0px; top: 134px; " id="layer1">
+				<ul id="menu">
+					<li>
+						<button id="songs_btn" class="menu_songs menu_btn" title="Songs"></button>
+					</li>
+					<li>
+						<button id="activities_btn"  class="menu_activities menu_btn" title="Activities"></button>
+					</li>
+					<li>
+						<button id="more_btn"  class="menu_more menu_btn" title="More"></button>
+					</li>
+					<li>
+						<button id="kids_btn"  class="menu_kids menu_btn" title="Kids Work"></button>
+					</li>
+				</ul>
+				<div id="menu_modal_songs" class="modal">
+					<div class="innerModal">
+						<div class="left_sub_menu">
+							<img src="images/photo1.jpg" alt="Ponte Vecchio">
+							<ul class="sub_menu">
+								<li class="sub_btn"><a href="songprep.htm">Prep</a></li>
+								<li class="sub_btn"><a href="song12.htm">Grade 1-2</a></li>
+								<li class="sub_btn"><a href="song34.htm"> Grade 3-4</a></li>
+								<li class="sub_btn"><a href="song56.htm">Grade 5-6</a></li>
+							</ul>
+						</div>
+						<div class="right_sub_menu">
+							<div class="sub_menu_desc"> Benvenuti to the Italian Songs pages. Click on your class on
+								the menu to the left to listen to some simple Italian children's songs. Read and
+								sing along with me and practice your vocabulary.
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="menu_modal_activities" class="modal">
+					<div class="innerModal">
+						<div class="left_sub_menu">
+							<img src="images/photo2.jpg" alt="Amalfi Coast? Maybe.">
+							<ul class="sub_menu menu_songs_submenu">
+								<li class="sub_btn"><a href="activeprep.htm">Prep</a></li>
+								<li class="sub_btn"><a href="active12.htm">Grade 1-2</a></li>
+								<li class="sub_btn"><a href="active34.htm"> Grade 3-4</a></li>
+								<li class="sub_btn"><a href="active56.htm">Grade 5-6</a></li>
+							</ul>
+						</div>
+						<div class="right_sub_menu">
+							<div class="sub_menu_desc"> Benvenuti  to the Italian Activities pages. Read along with me and learn some common greetings, body parts, numbers, colours, days of the week and a lot more.
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="menu_modal_more" class="modal">
+					<div class="innerModal">
+						<div class="left_sub_menu">
+							<img src="images/photo3.jpg" alt="Italian Alps">
+							<ul class="sub_menu">
+								<li class="sub_btn"><a href="recipes.htm">Recipes</a></li>
+								<li class="sub_btn"><a href="travel.htm">Travel</a></li>
+								<li class="sub_btn"><a href="stories.htm">Stories</a></li>
+								<li class="sub_btn"><a href="links.htm">Links</a></li>
+							</ul>
+						</div>
+						<div class="right_sub_menu">
+							<div class="sub_menu_desc"> Benvenuti  to the Italian Activities pages. Read along with me and learn some common greetings, body parts, numbers, colours, days of the week and a lot more.
+							</div>
+							<button class="sub_btn quiz_button"><a href="quiz.htm">Quiz</a></button>
+
+						</div>
+					</div>
+				</div>
+				<div id="menu_modal_kids" class="modal">
+					<div class="innerModal">
+						<div class="left_sub_menu">
+							<img src="images/photo4.jpg" alt="Venice">
+							<ul class="sub_menu">
+								<li class="sub_btn"><a href="workpreps.htm">Prep</a></li>
+								<li class="sub_btn"><a href="work12.htm">Grade 1-2</a></li>
+								<li class="sub_btn"><a href="work34.htm"> Grade 3-4</a></li>
+								<li class="sub_btn"><a href="work56.htm">Grade 5-6</a></li>
+							</ul>
+						</div>
+						<div class="right_sub_menu">
+							<div class="sub_menu_desc">Benvenuti  to the students work page, where you will find examples of your work. Click on your class on the menu to view some of your work.<br/></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
 &nbsp;<p>&nbsp;</p>
 		<p>&nbsp;</p>
 		<p>&nbsp;</td>
@@ -49,7 +138,7 @@ div#main
 	<table border="0" width="97%" id="table2" cellspacing="0" cellpadding="0">
 		<tr>
 			<td><!-- #BeginEditable "MainBody" --><b>
-			<font face="Arial" size="6" color="#BD1818">My Family</font></b><p align="left"><span style="font-size: 14pt">Click on the 
+			<font face="Arial" size="6" color="#BD1818">My Family</font></b><p align="left"><span style="font-size: 14pt">Click on the
 					word to hear it out load.</span><b><i><font style="font-size: 14pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>
 					</i></b></p>
 		<table border="0" width="100%" id="table3" cellpadding="0">
@@ -159,14 +248,9 @@ div#main
 			<!-- #EndEditable --><p>&nbsp;</td>
 		</tr>
 	</table>
-	<p><font style="font-size: 8pt">Copyright Anderson's Creek Primary School. Content By 
+	<p><font style="font-size: 8pt">Copyright Anderson's Creek Primary School. Content By
 	Concetta Gigliotti, Design by Gerard Gigliotti</font><div style="position: absolute; width: 100px; height: 100px; z-index: 1; left: 164px; top: 0px" id="layer2">
-		<object classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" id="obj1" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" border="0" width="562" height="137">
-			<param name="movie" value="movie/top.swf">
-			<param name="quality" value="High">
-			<param name="bgcolor" value="#ffffff">
-			<param name="wmode" value="transparent">
-			<embed src="movie/top.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="obj1" width="562" height="137" quality="High" bgcolor="#ffffff" wmode="transparent"></object>
+
 	</div>
 </div>
 		</td>

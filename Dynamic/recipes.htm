@@ -3,155 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <title>Italian 05 - Recipes</title>
-    <style type="text/css">
-        div#main {
-            position: absolute;
-            top: 8px;
-            left: 4%;
-        }
-
-        #menu {
-            list-style-type: none;
-            width: 161px;
-            padding: 0;
-            margin-top: 0;
-        }
-
-        #menu button {
-            width: 161px;
-            height: 55px;
-            border: 0;
-        }
-
-        #menu button:focus {
-            outline: 0;
-        }
-
-        .menu_songs {
-            background-image: url('images/songs.png');
-        }
-
-        .menu_songs:hover {
-            background-image: url('images/songs2.png');
-        }
-
-        .menu_activities {
-            background-image: url('images/activities.png');
-        }
-
-        .menu_activities:hover {
-            background-image: url('images/activities2.png');
-        }
-
-        .menu_more {
-            background-image: url('images/more.png');
-        }
-
-        .menu_more:hover {
-            background-image: url('images/more2.png');
-        }
-
-        .menu_kids {
-            background-image: url('images/kids.png');
-        }
-
-        .menu_kids:hover {
-            background-image: url('images/kids2.png');
-        }
-
-        .modal {
-			display: none;
-            position: absolute;
-            top: 0;
-            left: 180px;
-            background-color: #cc3333;
-            background-image: url('images/background.png');
-            width: 340px;
-            padding: 15px;
-			padding-bottom:5px;
-        }
-
-		.innerModal {
-			display:flex;
-		}
-
-        .sub_menu {
-            list-style-type: none;
-            width: 161px;
-            padding: 0;
-        }
-
-        .sub_btn {
-            background-image: url('images/blankred.png');
-            width: 161px;
-            height: 55px;
-            font-family: 'Comic Sans MS', 'sans-serif';
-            text-align: center;
-            vertical-align: middle;
-            font-size: 22px;
-            line-height: 45px;
-            color: white;
-            margin-bottom: 4px;
-			border: 0px;
-        }
-
-        .sub_btn a {
-            display: inline-block;
-            vertical-align: middle;
-			padding-right: 30px;
-			text-decoration: none;
-		}
-
-		.sub_btn a:link,.sub_btn a:visited {
-			color: white;
-			text-decoration: none;
-		}
-
-		.sub_btn:hover {
-            background-image: url('images/blankgreen.png');
-        }
-
-        .left_sub_menu {
-            float: left;
-            width: 50%;
-			height: 100%;
-        }
-
-        .right_sub_menu {
-            float: right;
-            width: 50%;
-			height: 100%;
-			vertical-align: text-bottom;
-			align-self: flex-end;
-			padding-bottom: 15px;
-
-		}
-
-        .sub_menu_desc {
-            font-family: "Comic Sans MS", cursive, sans-serif;
-			font-weight: normal;
-            font-size: 20px;
-            color: white;
-        }
-
-		.quiz_button {
-			margin-top: 2px;
-		}
-
-        #movie_banner_container {
-            background: transparent;
-            width: 562px;
-            height: 137px;
-            position: relative;
-            z-index: 1;
-            float: right;
-            right: 565px;
-        }
-
-    </style>
-    <script src="./scripts/createjs.min.js" ></script>
-    <script src="./scripts/bannerAnimation.js" defer ></script>
-    <script src="./scripts/menuAndBanner.js" defer ></script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="./scripts/createjs.min.js"></script>
+    <script src="./scripts/bannerAnimation.js" defer></script>
+    <script src="./scripts/menuAndBanner.js" defer></script>
 
 </head>
 <div id="main">
@@ -164,11 +19,13 @@
                         <img border="0" src="images/topleft.gif" width="161" height="119"></a></td>
                 <td height="119" width="551">
                     <img border="0" src="images/top.gif" width="562" height="137" align="left"></td>
-                    <div id="movie_banner_container" style="">
-                        <canvas id="movie_banner_canvas" width="562" height="137" style="position: absolute; display: block; background:transparent;"></canvas>
-                        <div id="movie_banner_dom_overlay" style="pointer-events:none; overflow:hidden; width:562px; height:137px; position: absolute; left: 0px; top: 0px; display: block;">
-                        </div>
+                <div id="movie_banner_container" style="">
+                    <canvas id="movie_banner_canvas" width="562" height="137"
+                            style="position: absolute; display: block; background:transparent;"></canvas>
+                    <div id="movie_banner_dom_overlay"
+                         style="pointer-events:none; overflow:hidden; width:562px; height:137px; position: absolute; left: 0px; top: 0px; display: block;">
                     </div>
+                </div>
             </tr>
             <tr>
                 <td width="161" background="images/sidebar.gif">
@@ -178,86 +35,94 @@
                                 <button id="songs_btn" class="menu_songs menu_btn" title="Songs"></button>
                             </li>
                             <li>
-                                <button id="activities_btn"  class="menu_activities menu_btn" title="Activities"></button>
+                                <button id="activities_btn" class="menu_activities menu_btn"
+                                        title="Activities"></button>
                             </li>
                             <li>
-                                <button id="more_btn"  class="menu_more menu_btn" title="More"></button>
+                                <button id="more_btn" class="menu_more menu_btn" title="More"></button>
                             </li>
                             <li>
-                                <button id="kids_btn"  class="menu_kids menu_btn" title="Kids Work"></button>
+                                <button id="kids_btn" class="menu_kids menu_btn" title="Kids Work"></button>
                             </li>
                         </ul>
                         <div id="menu_modal_songs" class="modal">
-							<div class="innerModal">
-							<div class="left_sub_menu">
-                                <img src="images/photo1.jpg" alt="Ponte Vecchio">
-                                <ul class="sub_menu">
-                                    <li class="sub_btn"><a href="songprep.htm">Prep</a></li>
-                                    <li class="sub_btn"><a href="song12.htm">Grade 1-2</a></li>
-                                    <li class="sub_btn"><a href="song34.htm"> Grade 3-4</a></li>
-                                    <li class="sub_btn"><a href="song56.htm">Grade 5-6</a></li>
-                                </ul>
-                            </div>
-                            <div class="right_sub_menu">
-                                <div class="sub_menu_desc"> Benvenuti to the Italian Songs pages. Click on your class on
-                                    the menu to the left to listen to some simple Italian children's songs. Read and
-                                    sing along with me and practice your vocabulary.
+                            <div class="innerModal">
+                                <div class="left_sub_menu">
+                                    <img src="images/photo1.jpg" alt="Ponte Vecchio">
+                                    <ul class="sub_menu">
+                                        <li class="sub_btn"><a href="songprep.htm">Prep</a></li>
+                                        <li class="sub_btn"><a href="song12.htm">Grade 1-2</a></li>
+                                        <li class="sub_btn"><a href="song34.htm"> Grade 3-4</a></li>
+                                        <li class="sub_btn"><a href="song56.htm">Grade 5-6</a></li>
+                                    </ul>
+                                </div>
+                                <div class="right_sub_menu">
+                                    <div class="sub_menu_desc"> Benvenuti to the Italian Songs pages. Click on your
+                                        class on
+                                        the menu to the left to listen to some simple Italian children's songs. Read and
+                                        sing along with me and practice your vocabulary.
+                                    </div>
                                 </div>
                             </div>
-						</div>
                         </div>
-						<div id="menu_modal_activities" class="modal">
-							<div class="innerModal">
-							<div class="left_sub_menu">
-								<img src="images/photo2.jpg" alt="Amalfi Coast? Maybe.">
-								<ul class="sub_menu menu_songs_submenu">
-									<li class="sub_btn"><a href="activeprep.htm">Prep</a></li>
-									<li class="sub_btn"><a href="active12.htm">Grade 1-2</a></li>
-									<li class="sub_btn"><a href="active34.htm"> Grade 3-4</a></li>
-									<li class="sub_btn"><a href="active56.htm">Grade 5-6</a></li>
-								</ul>
-							</div>
-							<div class="right_sub_menu">
-								<div class="sub_menu_desc"> Benvenuti  to the Italian Activities pages. Read along with me and learn some common greetings, body parts, numbers, colours, days of the week and a lot more.
-								</div>
-							</div>
-							</div>
-						</div>
-						<div id="menu_modal_more" class="modal">
-							<div class="innerModal">
-								<div class="left_sub_menu">
-									<img src="images/photo3.jpg" alt="Italian Alps">
-									<ul class="sub_menu">
-										<li class="sub_btn"><a href="recipes.htm">Recipes</a></li>
-										<li class="sub_btn"><a href="travel.htm">Travel</a></li>
-										<li class="sub_btn"><a href="stories.htm">Stories</a></li>
-										<li class="sub_btn"><a href="links.htm">Links</a></li>
-									</ul>
-								</div>
-								<div class="right_sub_menu">
-									<div class="sub_menu_desc"> Benvenuti  to the Italian Activities pages. Read along with me and learn some common greetings, body parts, numbers, colours, days of the week and a lot more.
-									</div>
-									<button class="sub_btn quiz_button"><a href="quiz.htm">Quiz</a></button>
+                        <div id="menu_modal_activities" class="modal">
+                            <div class="innerModal">
+                                <div class="left_sub_menu">
+                                    <img src="images/photo2.jpg" alt="Amalfi Coast? Maybe.">
+                                    <ul class="sub_menu menu_songs_submenu">
+                                        <li class="sub_btn"><a href="activeprep.htm">Prep</a></li>
+                                        <li class="sub_btn"><a href="active12.htm">Grade 1-2</a></li>
+                                        <li class="sub_btn"><a href="active34.htm"> Grade 3-4</a></li>
+                                        <li class="sub_btn"><a href="active56.htm">Grade 5-6</a></li>
+                                    </ul>
+                                </div>
+                                <div class="right_sub_menu">
+                                    <div class="sub_menu_desc"> Benvenuti to the Italian Activities pages. Read along
+                                        with me and learn some common greetings, body parts, numbers, colours, days of
+                                        the week and a lot more.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menu_modal_more" class="modal">
+                            <div class="innerModal">
+                                <div class="left_sub_menu">
+                                    <img src="images/photo3.jpg" alt="Italian Alps">
+                                    <ul class="sub_menu">
+                                        <li class="sub_btn"><a href="recipes.htm">Recipes</a></li>
+                                        <li class="sub_btn"><a href="travel.htm">Travel</a></li>
+                                        <li class="sub_btn"><a href="stories.htm">Stories</a></li>
+                                        <li class="sub_btn"><a href="links.htm">Links</a></li>
+                                    </ul>
+                                </div>
+                                <div class="right_sub_menu">
+                                    <div class="sub_menu_desc"> Benvenuti to the Italian Activities pages. Read along
+                                        with me and learn some common greetings, body parts, numbers, colours, days of
+                                        the week and a lot more.
+                                    </div>
+                                    <button class="sub_btn quiz_button"><a href="quiz.htm">Quiz</a></button>
 
-								</div>
-							</div>
-						</div>
-						<div id="menu_modal_kids" class="modal">
-							<div class="innerModal">
-								<div class="left_sub_menu">
-									<img src="images/photo4.jpg" alt="Venice">
-									<ul class="sub_menu">
-										<li class="sub_btn"><a href="workpreps.htm">Prep</a></li>
-										<li class="sub_btn"><a href="work12.htm">Grade 1-2</a></li>
-										<li class="sub_btn"><a href="work34.htm"> Grade 3-4</a></li>
-										<li class="sub_btn"><a href="work56.htm">Grade 5-6</a></li>
-									</ul>
-								</div>
-								<div class="right_sub_menu">
-									<div class="sub_menu_desc">Benvenuti  to the students work page, where you will find examples of your work. Click on your class on the menu to view some of your work.<br/></div>
-								</div>
-							</div>
-						</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menu_modal_kids" class="modal">
+                            <div class="innerModal">
+                                <div class="left_sub_menu">
+                                    <img src="images/photo4.jpg" alt="Venice">
+                                    <ul class="sub_menu">
+                                        <li class="sub_btn"><a href="workpreps.htm">Prep</a></li>
+                                        <li class="sub_btn"><a href="work12.htm">Grade 1-2</a></li>
+                                        <li class="sub_btn"><a href="work34.htm"> Grade 3-4</a></li>
+                                        <li class="sub_btn"><a href="work56.htm">Grade 5-6</a></li>
+                                    </ul>
+                                </div>
+                                <div class="right_sub_menu">
+                                    <div class="sub_menu_desc">Benvenuti to the students work page, where you will find
+                                        examples of your work. Click on your class on the menu to view some of your
+                                        work.<br/></div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     &nbsp;<p>&nbsp;</p>
