@@ -1,0 +1,388 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Italian 05 - Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #BA0E0E;
+            font-size: 30px;
+        }
+
+        h2 {
+            font-size: 20px;
+            width: 440px;
+        }
+
+        .quiz_selectors {
+            display: flex;
+            margin-top: 50px;
+        }
+
+        .quiz_selector {
+            width: 150px;
+            height: 150px;
+            font-size: 88px;
+            color: #BA0E0E;
+            background-image: url('./images/quiz_button.gif');
+            text-align: center;
+            vertical-align: middle;
+            line-height: 140px;
+            font-weight: bold;
+            margin-left: 50px;
+            cursor: pointer;
+        }
+
+        .quiz_selector:hover {
+            color: #636E29;
+        }
+
+        .quiz_subtitle {
+            color: #636E29;
+        }
+
+        h3, p, ol {
+            margin: 0px;
+        }
+
+        ol {
+            margin-left: 90px;
+        }
+
+        li {
+            margin-top: 25px;
+        }
+
+        #finalScore {
+            font-size: 96px;
+            margin-left: 100px;
+            margin-bottom: 20px;
+        }
+
+        #user_score {
+            border: 1px solid black;
+            display: inline-block;
+            width: 110px;
+            margin-right: 10px;
+            text-align: right;
+        }
+
+        #question_frame, #final_frame {
+            display: none;
+        }
+
+    </style>
+    <script>
+        const quizes = [[
+            {
+                question: "What is the name of the Italian currency?",
+                answers: [
+                    {"answer": "Euro", "isCorrect": true,},
+                    {"answer": "Lira"},
+                    {"answer": "Dollar"}
+                ]
+            },
+            {
+                question: "Where was \"gelato\" first created?",
+                answers: [
+                    {"answer": "Rome"},
+                    {"answer": "Sicily", "isCorrect": true,},
+                    {"answer": "Calabria"}
+                ]
+            },
+            {
+                question: "What is the name of the highest mountain in Italy?",
+                answers: [
+                    {"answer": "Mt Bianco", "isCorrect": true,},
+                    {"answer": "Mt Etna"},
+                    {"answer": "Mt Vesuvius"}
+                ]
+            },
+            {
+                question: "What body part do you place into the mouth of truth in \"Boca della verita\" in Rome?",
+                answers: [
+                    {"answer": "Foot"},
+                    {"answer": "Nose"},
+                    {"answer": "Hand", "isCorrect": true}
+                ]
+            },
+            {
+                question: "What colour is most prominent in Ferraris?",
+                answers: [
+                    {"answer": "White"},
+                    {"answer": "Red", "isCorrect": true},
+                    {"answer": "Purple"}
+                ]
+            },
+            {
+                question: "Who carved \"La Pieta\"?",
+                answers: [
+                    {"answer": "Michelangelo", "isCorrect": true},
+                    {"answer": "Leonardo da Vinci"},
+                    {"answer": "Archimboldo"}
+                ]
+            },
+            {
+                question: "The Colosseum was famous for?",
+                answers: [
+                    {"answer": "Plays"},
+                    {"answer": "An ancient form of tennis"},
+                    {"answer": "Gladiator battles", "isCorrect": true}
+                ]
+            },
+            {
+                question: "Italians drive on which side of the road?",
+                answers: [
+                    {"answer": "Left"},
+                    {"answer": "Right", "isCorrect": true},
+                    {"answer": "There are no roads"},
+                ]
+            },
+            {
+                question: "What is the capital of Italy?",
+                answers: [
+                    {"answer": "Rome", "isCorrect": true},
+                    {"answer": "Pisa"},
+                    {"answer": "Torino"},
+                ]
+            },
+            {
+                question: "Which Italian city has a large tram system?",
+                answers: [
+                    {"answer": "Florence"},
+                    {"answer": "Antona"},
+                    {"answer": "Milano", "isCorrect": true},
+                ]
+            }
+        ], [
+            {
+                question: "What are the names of two islands off Italy?",
+                answers: [
+                    {"answer": "Sicily & Sardegna", "isCorrect": true,},
+                    {"answer": "Suva & Fiji"},
+                    {"answer": "Tasmania & New Zealand"}
+                ]
+            },
+            {
+                question: "What are the names of two islands off Italy?",
+                answers: [
+                    {"answer": "Venezia"},
+                    {"answer": "Naples", "isCorrect": true,},
+                    {"answer": "Rome"}
+                ]
+            },
+            {
+                question: "What was another name for Rome?",
+                answers: [
+                    {"answer": "Eternal city", "isCorrect": true,},
+                    {"answer": "Vatican City"},
+                    {"answer": "Athens"}
+                ]
+            },
+            {
+                question: "What is the name of the river that flows through Rome?",
+                answers: [
+                    {"answer": "Tiber", "isCorrect": true,},
+                    {"answer": "Thames"},
+                    {"answer": "Nile"}
+                ]
+            },
+            {
+                question: "What is the name of the city that has no cars?",
+                answers: [
+                    {"answer": "Amsterdam"},
+                    {"answer": "Venice", "isCorrect": true,},
+                    {"answer": "Tokyo"}
+                ]
+            },
+            {
+                question: "How many regions are there in Italy?",
+                answers: [
+                    {"answer": "20", "isCorrect": true},
+                    {"answer": "21"},
+                    {"answer": "22"}
+                ]
+            },
+            {
+                question: "What is the name of the most popular car in Italy?",
+                answers: [
+                    {"answer": "Ferrari"},
+                    {"answer": "Lamborgini"},
+                    {"answer": "Fiat", "isCorrect": true}
+                ]
+            },
+            {
+                question: "What is the name of the famous fountain that tourists throw money into in the city of Rome?",
+                answers: [
+                    {"answer": "Trevi", "isCorrect": true},
+                    {"answer": "Pisa"},
+                    {"answer": "Etna"}
+                ]
+            },
+            {
+                question: "What is the name of the airport in Roma?",
+                answers: [
+                    {"answer": "Quintus Romano"},
+                    {"answer": "Leonardo da Vinci", "isCorrect": true},
+                    {"answer": "Caesar"}
+                ]
+            },
+            {
+                question: "Who painted the Mona Lisa?",
+                answers: [
+                    {"answer": "Picasso"},
+                    {"answer": "Michelangelo"},
+                    {"answer": "Leonardo da Vinci", "isCorrect": true}
+                ]
+            },
+        ]]
+        let introFrame;
+        let questionFrame;
+        let finalFrame;
+
+        let selectedQuiz = -1;
+        let currentQuestion = 0;
+        let correctCounter = 0;
+
+        function startQuiz() {
+            const quizNumber = document.getElementById('quiz_number');
+            quizNumber.textContent = `${selectedQuiz + 1}`;
+
+            correctCounter = 0;
+
+            showQuestion()
+
+            introFrame.style.display = "none";
+            questionFrame.style.display = "block";
+
+        }
+
+        function showQuestion() {
+            const questionNumber  = document.getElementById('question_number');
+            const questionText = document.getElementById('question_text');
+            const questionAnswers = document.getElementsByClassName('question_answer');
+
+            const question = quizes[selectedQuiz][currentQuestion];
+
+            questionNumber.textContent =  `${currentQuestion + 1}`;
+            questionText.textContent = question.question;
+
+            let currentAnswer = 0;
+            for(const questionAnswer of questionAnswers) {
+                const answer = question.answers[currentAnswer];
+                questionAnswer.textContent = answer.answer;
+                currentAnswer++;
+            }
+        }
+
+        function answerQuestion(selectedAnswer) {
+            const question = quizes[selectedQuiz][currentQuestion];
+            if(question.answers[selectedAnswer].isCorrect) {
+                correctCounter++;
+            }
+
+            if(currentQuestion === 9) {
+                showEndFrame();
+            } else {
+                currentQuestion++;
+                showQuestion();
+            }
+        }
+
+        function showEndFrame() {
+            const quizNumber  = document.getElementById('quiz_final_number');
+            const userScore = document.getElementById('user_score');
+
+            introFrame.style.display = "none";
+            questionFrame.style.display = "none";
+            finalFrame.style.display = "block";
+
+            quizNumber.textContent = `${selectedQuiz + 1}`;
+            userScore.textContent = `${correctCounter}`;
+        }
+
+        function endQuiz() {
+            selectedQuiz = -1;
+            currentQuestion = 0;
+            correctCounter = 0;
+
+            introFrame.style.display = "block";
+            questionFrame.style.display = "none";
+            finalFrame.style.display = "none";
+        }
+
+        window.onload = function onload() {
+            introFrame = document.getElementById('intro_frame');
+            questionFrame = document.getElementById('question_frame');
+            finalFrame = document.getElementById('final_frame');
+            const endQuizButton = document.getElementById('end_quiz')
+
+            const quizSelectors = document.getElementsByClassName('quiz_selector');
+            for (const quizSelector of quizSelectors) {
+                quizSelector.addEventListener("click", function showQuiz() {
+                    selectedQuiz = quizSelector.dataset.quiz_number - 1;
+                    startQuiz()
+                })
+            }
+
+            const questionAnswers = document.getElementsByClassName('question_answer');
+            let currentAnswer = 0;
+            for(const questionAnswer of questionAnswers) {
+                const selectedAnswer = currentAnswer;
+                questionAnswer.addEventListener("click", function showQuiz() {
+                    answerQuestion(selectedAnswer)
+                })
+
+                currentAnswer++;
+            }
+
+
+            endQuizButton.addEventListener('click', function endQuizClick() {
+                endQuiz()
+            })
+        }
+
+    </script>
+</head>
+
+
+<body>
+<div id="intro_frame">
+    <h1>Quiz o'Matic</h1>
+    <h2>Welcome to the new interactive Quiz o'Matic. Please select which quiz you would like to do.</h2>
+    <div class="quiz_selectors">
+        <div class="quiz_selector" data-quiz_number="1">
+            1
+        </div>
+        <div class="quiz_selector" data-quiz_number="2">
+            2
+        </div>
+    </div>
+</div>
+<div id="question_frame">
+    <h1>Quiz o'Matic<span class="quiz_subtitle"> :Quiz </span><span id="quiz_number" class="quiz_subtitle">1</span></h1>
+    <h3>Question <span id="question_number"></span>:</h3>
+    <p id="question_text"></p>
+    <ol>
+        <li class="question_answer"></li>
+        <li class="question_answer"></li>
+        <li class="question_answer"></li>
+    </ol>
+</div>
+<div id="final_frame">
+    <h1>Quiz o'Matic<span class="quiz_subtitle"> :Quiz </span><span id="quiz_final_number" class="quiz_subtitle">1</span></h1>
+    <h2>Congratulations, you've finished the quiz. You got:</h2>
+    <div id="finalScore">
+        <span id="user_score">1</span>/10
+    </div>
+    <p id="end_quiz">Click here to go back to the selection page.</p>
+</div>
+</body>
+
+</html>
