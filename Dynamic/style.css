@@ -22,35 +22,35 @@ div#main {
 }
 
 .menu_songs {
-    background-image: url('images/songs.png');
+    background: url('./images/songs_sprite.png') -10px -10px;
 }
 
 .menu_songs:hover {
-    background-image: url('images/songs2.png');
+    background: url('./images/songs_sprite.png') -10px -85px;
 }
 
 .menu_activities {
-    background-image: url('images/activities.png');
+    background: url('./images/activities_sprites.png') -10px -10px;
 }
 
 .menu_activities:hover {
-    background-image: url('images/activities2.png');
+    background: url('./images/activities_sprites.png') -10px -85px;
 }
 
 .menu_more {
-    background-image: url('images/more.png');
+    background: url('./images/more_sprites.png') -10px -10px;
 }
 
 .menu_more:hover {
-    background-image: url('images/more2.png');
+    background: url('./images/more_sprites.png') -10px -85px;
 }
 
 .menu_kids {
-    background-image: url('images/kids.png');
+    background: url('./images/kids_sprites.png') -10px -10px;
 }
 
 .menu_kids:hover {
-    background-image: url('images/kids2.png');
+    background: url('./images/kids_sprites.png') -10px -85px;
 }
 
 .modal {
@@ -76,7 +76,7 @@ div#main {
 }
 
 .sub_btn {
-    background-image: url('images/blankred.png');
+    background: url('./images/submenu_sprites.png') -10px -10px;
     width: 161px;
     height: 55px;
     font-family: 'Comic Sans MS', 'sans-serif';
@@ -102,7 +102,7 @@ div#main {
 }
 
 .sub_btn:hover {
-    background-image: url('images/blankgreen.png');
+    background: url('./images/submenu_sprites.png') -10px -85px;
 }
 
 .left_sub_menu {
