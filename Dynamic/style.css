@@ -79,7 +79,7 @@ div#main {
     background: url('./images/submenu_sprites.png') -10px -10px;
     width: 161px;
     height: 55px;
-    font-family: 'Comic Sans MS', 'sans-serif';
+    font-family: "Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", sans-serif;
     text-align: center;
     vertical-align: middle;
     font-size: 22px;
@@ -122,7 +122,7 @@ div#main {
 }
 
 .sub_menu_desc {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: "Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", sans-serif;
     font-weight: normal;
     font-size: 20px;
     color: white;
@@ -136,8 +136,8 @@ div#main {
     background: transparent;
     width: 562px;
     height: 137px;
-    position: relative;
+    position: absolute;
     z-index: 1;
     float: right;
-    right: 565px;
+    left: 160px;
 }

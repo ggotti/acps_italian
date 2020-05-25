@@ -3,12 +3,12 @@ function initBanner() {
     canvas = document.getElementById("movie_banner_canvas");
     anim_container = document.getElementById("movie_banner_container");
     dom_overlay_container = document.getElementById("movie_banner_dom_overlay");
-    var comp=AdobeAn.getComposition("F2EE6AAC53204C748EF5080F224ED450");
-    var lib=comp.getLibrary();
-    var loader = new createjs.LoadQueue(false);
+    let comp=AdobeAn.getComposition("F2EE6AAC53204C748EF5080F224ED450");
+    let lib = comp.getLibrary();
+    let loader = new createjs.LoadQueue(false);
     loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
     loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
-    var lib=comp.getLibrary();
+    lib = comp.getLibrary();
     loader.loadManifest(lib.properties.manifest);
 }
 function handleFileLoad(evt, comp) {
@@ -56,7 +56,7 @@ function hideAllModals(modals) {
 function initSound() {
     const audioLinks = document.querySelectorAll('[data-audio]');
     for(const audioLink of audioLinks) {
-        audioLink.addEventListener("click", function playAudio(event) {
+        audioLink.addEventListener('click', function playAudio(event) {
             const audio = new Audio(audioLink.href);
             event.preventDefault();
             return audio.play();
@@ -76,17 +76,21 @@ window.onload = function onload() {
         const modalName =  buttonId.substring(0, buttonId.lastIndexOf('_'));
         const buttonModal = modals['menu_modal_' + modalName];
 
-        menuBtn.addEventListener("click", function hideModelTrigger() {
-            hideAllModals(modalsList)
-            showModel(buttonModal);
-        })
+        menuBtn.addEventListener('click', function hideModelTrigger() {
+            const initialDisplayState = buttonModal.style.display;
+            hideAllModals(modalsList);
 
-        buttonModal.addEventListener("mouseleave", function hideModelTrigger() {
+            if(initialDisplayState !== 'block') {
+                showModel(buttonModal);
+            }
+        });
+
+        buttonModal.addEventListener('mouseleave', function hideModelTrigger() {
             hideModel(buttonModal)
-        })
+        });
     }
 
     initSound()
 
-    initBanner()
+    initBanner();
 }
